@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>누구세요</title>
+
+    <!-- fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- icons -->
+    <link href="https://iconsax.gitlab.io/i/icons.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/thin/style.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- scripts -->
+    <script>
+        var title = document.title;
+        var title_stripped = title.replace("Viewing Profile ->", "");
+        document.title = title_stripped;
+    </script>
+    <script>
+        var title = document.title;
+        var title_stripped = title.replace("누구세요 ->", "");
+        document.title = title_stripped;
+    </script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="left-menu">
+            <button class="menu-toggle" id="menuToggle">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+            <span class="menu-text">MENU</span>
+        </div>
+        <div class="right-menu">
+            <div id="darkmodeactivate">
+                <label class="theme-switch" for="checkbox" title="Switch theme">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="toggle-icon"></div>
+                </label>
+            </div>
+            <button class="notifications">
+                <i class="iconsax" icon-name="bell-1"></i>
+            </button>
+            <div class="user-menu">
+                <button class="user-toggle" id="userToggle">
+                    <img src="https://via.placeholder.com/50" alt="User Avatar">
+                    <i class="iconsax" icon-name="chevron-down"></i>
+                </button>
+                <div class="dropdown" id="userDropdown">
+                    something something
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        something something
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header class="header-container">
+        <!-- Imagem principal -->
+        <div class="main-image-container">
+            <img src="https://via.placeholder.com/500" alt="Main Image" class="main-image">
+            <!-- Imagens menores sobrepondo -->
+            <div class="overlay-image overlay-left">
+                <img src="https://via.placeholder.com/150" alt="Overlay Image Left">
+            </div>
+            <div class="overlay-image overlay-right">
+                <img src="https://via.placeholder.com/150" alt="Overlay Image Right">
+            </div>
+        </div>
+
+        <!-- Texto ao redor -->
+        <div class="text-overlay text-top-left">
+            <p>set in <br><b><i class="iconsax" icon-name="calendar-1"></i> 2024</b></p>
+        </div>
+        <div class="text-overlay text-top-right">
+            <p>love myself today<br>
+                let you go today</p>
+        </div>
+        <div class="text-overlay text-bottom-left">
+            <p>it must not be coincidence,<br>it was fate, a blessing for me</p>
+        </div>
+
+        <!-- Título no canto inferior direito -->
+        <div class="title-bottom-right">
+            <p>누구세요?</p>
+        </div>
+    </header>
+
+</body>
+
+<script>    // darkmode script
+    const toggleSwitch = document.querySelector(
+        '.theme-switch input[type="checkbox"]'
+    );
+    const currentTheme = localStorage.getItem("theme");
+
+    if (currentTheme) {
+        document.documentElement.setAttribute("data-theme", currentTheme);
+
+        if (currentTheme === "dark") {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+    toggleSwitch.addEventListener("change", switchTheme, false);
+</script>
+
+
+<script>// Sidebar toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    // User dropdown toggle
+    const userToggle = document.getElementById('userToggle');
+    const userDropdown = document.getElementById('userDropdown');
+
+    // Open/close sidebar and show/hide overlay
+    menuToggle.addEventListener('click', function () {
+        sidebar.classList.toggle('show-sidebar');
+        overlay.classList.toggle('show-overlay');
+        menuToggle.classList.toggle('change'); // Adiciona a classe que anima o hambúrguer
+    });
+
+    // Close sidebar when clicking outside of it (overlay)
+    overlay.addEventListener('click', function () {
+        sidebar.classList.remove('show-sidebar');
+        overlay.classList.remove('show-overlay');
+        menuToggle.classList.remove('change'); // Remove a classe ao fechar
+    });
+
+    // Toggle user dropdown
+    userToggle.addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevent event from propagating to the body or overlay
+        if (userDropdown.style.display === 'block') {
+            userDropdown.style.display = 'none';
+        } else {
+            userDropdown.style.display = 'block';
+        }
+    });
+
+    // Close user dropdown when clicking outside of it
+    document.body.addEventListener('click', function (event) {
+        if (!userToggle.contains(event.target) && !userDropdown.contains(event.target)) {
+            userDropdown.style.display = 'none';
+        }
+    });
+</script>
+
+</html>
